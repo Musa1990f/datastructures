@@ -34,68 +34,96 @@ const restaurant = {
 
 // destructuring objects
 
-const {name, openingHours,categories} = restaurant;
-console.log(name,openingHours,categories);
+// const {name, openingHours,categories} = restaurant;
+// console.log(name,openingHours,categories);
 
-const {name: restaurantName, openingHours: hours,categories: tags} = restaurant;
-console.log(restaurantName,hours,tags);
+// const {name: restaurantName, openingHours: hours,categories: tags} = restaurant;
+// console.log(restaurantName,hours,tags);
 
-// default values
-const { menu = [], starterMenu: starters = {}} = restaurant;
-console.log(menu,starters);
+// // default values
+// const { menu = [], starterMenu: starters = {}} = restaurant;
+// console.log(menu,starters);
 
-// mutating variables  or changing
-let a = 111;
-let b = 222;
-const obj = { a: 23, b: 34, c: 4};
- ({a,b} = obj);
-console.log(a,b);
+// // mutating variables  or changing
+// let a = 111;
+// let b = 222;
+// const obj = { a: 23, b: 34, c: 4};
+//  ({a,b} = obj);
+// console.log(a,b);
 
-// Nesting  objects
-const {
-fri: {open: o, close: c},
-} = openingHours;
-console.log(o,c);
+// // Nesting  objects
+// const {
+// fri: {open: o, close: c},
+// } = openingHours;
+// console.log(o,c);
 
-const arr = [1,2,3];
-const newArr = [5,6,arr[0],arr[1],arr[2]];
-console.log(newArr);
+// const arr = [1,2,3];
+// const newArr = [5,6,arr[0],arr[1],arr[2]];
+// console.log(newArr);
 
-// Spread Operator
-const goodArr = [5,6,...arr];
-console.log(goodArr);
-console.log(...goodArr);
+// // Spread Operator
+// const goodArr = [5,6,...arr];
+// console.log(goodArr);
+// console.log(...goodArr);
 
-const newMenu = [...restaurant.mainMenu, "Beef"];
-console.log(newMenu);
+// const newMenu = [...restaurant.mainMenu, "Beef"];
+// console.log(newMenu);
 
-// Copying Arrays
-const mainMenuCopy = [...restaurant.mainMenu];
+// // Copying Arrays
+// const mainMenuCopy = [...restaurant.mainMenu];
 
-// Joining Arrays
-const menu1 = [...restaurant.starterMenu, ...restaurant.mainMenu];
-console.log(menu1);
+// // Joining Arrays
+// const menu1 = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// console.log(menu1);
 
-/* what are iterables ?
-iterables: arrays, strings, maps, sets but NOT objects
-*/
+// /* what are iterables ?
+// iterables: arrays, strings, maps, sets but NOT objects
+// */
 
-const str = "Jonas";
-const letters = [...str, ' ', 'm.']
-console.log(letters);
-console.log(...str);
+// const str = "Jonas";
+// const letters = [...str, ' ', 'm.']
+// console.log(letters);
+// console.log(...str);
 
-// spread operator on objects
-const newRestaurant = {
-  ...restaurant, founder: "Jonas", founded: 1999
+// // spread operator on objects
+// const newRestaurant = {
+//   ...restaurant, founder: "Jonas", founded: 1999
+// }
+// console.log(newRestaurant);
+
+// // copying objects
+// const restaurantCopy = {...restaurant};
+// restaurantCopy.name = "Ristorante Roma";
+// console.log(restaurantCopy.name);
+// console.log(restaurant.name);
+
+// Spread operator is on the right side of = sign
+// const arr = [1,2,...3,4,5];
+
+/*#1 destructuring */
+// Rest operator is on the left side of =
+const [a,b,...others] = [1,2,3,4,5];
+console.log(a,b,others);
+
+const [Pizza, , Risotto,...otherFood] = [...restaurant.mainMenu,...restaurant.starterMenu];
+console.log(Pizza,Risotto,otherFood);
+
+// Rest operator in Objects
+const {sat,...weekdays} = restaurant.openingHours;
+console.log(sat,weekdays);
+
+/*#2 in functions */
+const add = function(...numbers){
+  let sum = 0;
+  for(let i = 0; i < numbers.length; i++) sum += numbers[i];
+  console.log(sum);
 }
-console.log(newRestaurant);
+add(2,4);
+add(2,3,4,5);
 
-// copying objects
-const restaurantCopy = {...restaurant};
-restaurantCopy.name = "Ristorante Roma";
-console.log(restaurantCopy.name);
-console.log(restaurant.name);
+const x = [23,8];
+add(...x);
+
 
 
 
