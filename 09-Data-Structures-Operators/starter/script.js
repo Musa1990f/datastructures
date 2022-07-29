@@ -12,6 +12,7 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
   order: function(starterIndex, mainIndex){
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
@@ -31,6 +32,14 @@ const restaurant = {
     },
   },
 };
+// looping Arrays]: The for-of-loop
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+for (const item of menu) console.log(item);
+
+// destructuring arrays
+for (const [i,el] of menu.entries()){
+  console.log(i,el);
+}
 
 // destructuring objects
 
@@ -103,27 +112,27 @@ const restaurant = {
 /*#1 destructuring */
 
 // Rest operator is on the left side of =
-const [a,b,...others] = [1,2,3,4,5];
-console.log(a,b,others);
+// const [a,b,...others] = [1,2,3,4,5];
+// console.log(a,b,others);
 
-const [Pizza, , Risotto,...otherFood] = [...restaurant.mainMenu,...restaurant.starterMenu];
-console.log(Pizza,Risotto,otherFood);
+// const [Pizza, , Risotto,...otherFood] = [...restaurant.mainMenu,...restaurant.starterMenu];
+// console.log(Pizza,Risotto,otherFood);
 
-// Rest operator in Objects
-const {sat,...weekdays} = restaurant.openingHours;
-console.log(sat,weekdays);
+// // Rest operator in Objects
+// const {sat,...weekdays} = restaurant.openingHours;
+// console.log(sat,weekdays);
 
-/*#2 in functions */
-const add = function(...numbers){
-  let sum = 0;
-  for(let i = 0; i < numbers.length; i++) sum += numbers[i];
-  console.log(sum);
-}
-add(2,4);
-add(2,3,4,5);
+// /*#2 in functions */
+// const add = function(...numbers){
+//   let sum = 0;
+//   for(let i = 0; i < numbers.length; i++) sum += numbers[i];
+//   console.log(sum);
+// }
+// add(2,4);
+// add(2,3,4,5);
 
-const x = [23,8];
-add(...x);
+// const x = [23,8];
+// add(...x);
 
 
 
@@ -175,31 +184,74 @@ console.log(p,q,r);// q and r become 1!!
 // || / ---OR--- Operator
 
 // || / ---OR--- operator returns the first truthy value or the last falsy value if they are all false values:
-console.log('----OR----');
-console.log(3 || 'Jonas');
-console.log('' || 'Jonas');
-console.log(true || 0);
-console.log(undefined || null);
+// console.log('----OR----');
+// console.log(3 || 'Jonas');
+// console.log('' || 'Jonas');
+// console.log(true || 0);
+// console.log(undefined || null);
 
-console.log(undefined || 0 || 'Hello' || 23 || null);
+// console.log(undefined || 0 || 'Hello' || 23 || null);
+
+// restaurant.numGuests = 0;
+// const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+// console.log(guests1);
+
+// const guests2 = restaurant.numGuests || 10;
+// console.log(guests2);
+
+// // && /--- AND--- Operator
+// // && / AND operator returns the first falsy value and the last truthy value if both the last values are truthy:
+// console.log('---AND---');gi
+// console.log(7 && 'Hello');
+// console.log(0 && 'Jonas');
+// console.log(
+//   'hello' && 0 && null && 'Jonas'
+// );
+ 
+
 
 restaurant.numGuests = 0;
-const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
-console.log(guests1);
-
 const guests2 = restaurant.numGuests || 10;
 console.log(guests2);
 
-// && /--- AND--- Operator
-// && / AND operator returns the first falsy value and the last truthy value if both the last values are truthy:
-console.log('---AND---');gi
-console.log(7 && 'Hello');
-console.log(0 && 'Jonas');
-console.log(
-  'hello' && 0 && null && 'Jonas'
-);
- 
 // Nullish: null and undefined (NOT⛔ 0 , '')
+
+const guests = restaurant.numGuests ?? 10;
+console.log(guests);
+
+// OR assignment operator
+
+const rest1 = {
+  name: 'Capri',
+  numGuests: 20,
+};
+
+const rest2 = {
+  name: 'La Piazza',
+  owner: 'Giovanni Rossi',
+};
+// OR assignment operator
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
+
+// rest1.numGuests ||= 10;
+// rest1.numGuests ||= 10;
+
+// AND assignment operator
+// rest1.numGuests = rest1.numGuests && '<ANONYMOUS>';
+// rest2.numGuests = rest2.numGuests &&  '<ANONYMOUS>';
+
+// rest1.numGuests &&= '<ANONYMOUS>';
+// rest1.numGuests &&= '<ANONYMOUS>';
+
+// Nullish assignment operator
+
+rest1.numGuests ??= 10;
+rest1.numGuests ??= 10;
+
+console.log(rest1);
+console.log(rest2);
+
 
 
 
