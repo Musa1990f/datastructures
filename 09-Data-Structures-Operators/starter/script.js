@@ -101,6 +101,7 @@ const restaurant = {
 // const arr = [1,2,...3,4,5];
 
 /*#1 destructuring */
+
 // Rest operator is on the left side of =
 const [a,b,...others] = [1,2,3,4,5];
 console.log(a,b,others);
@@ -169,3 +170,36 @@ const [p=1, q=1,r=1] = [9.8];
 console.log(p,q,r);// q and r become 1!!
 
 */
+// short circuiting (&& and ||)
+
+// || / ---OR--- Operator
+
+// || / ---OR--- operator returns the first truthy value or the last falsy value if they are all false values:
+console.log('----OR----');
+console.log(3 || 'Jonas');
+console.log('' || 'Jonas');
+console.log(true || 0);
+console.log(undefined || null);
+
+console.log(undefined || 0 || 'Hello' || 23 || null);
+
+restaurant.numGuests = 0;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+// && /--- AND--- Operator
+// && / AND operator returns the first falsy value and the last truthy value if both the last values are truthy:
+console.log('---AND---');gi
+console.log(7 && 'Hello');
+console.log(0 && 'Jonas');
+console.log(
+  'hello' && 0 && null && 'Jonas'
+);
+ 
+// Nullish: null and undefined (NOT⛔ 0 , '')
+
+
+
