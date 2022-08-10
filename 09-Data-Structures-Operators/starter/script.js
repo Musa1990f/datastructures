@@ -6,6 +6,7 @@ const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 // Data needed for first part of the section
+
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -17,14 +18,14 @@ const restaurant = {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
-  openingHours: {
+   openingHours : {
     thu: {
       open: 12,
       close: 22,
     },
     fri: {
       open: 11,
-      close: 23,
+      close: 23, 
     },
     sat: {
       open: 0, // Open 24 hours
@@ -32,15 +33,99 @@ const restaurant = {
     },
   },
 };
+
+
+
 // looping Arrays]: The for-of-loop
-const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
-for (const item of menu) console.log(item);
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// for (const item of menu) console.log(item);
 
-// destructuring arrays
-for (const [i,el] of menu.entries()){
-  console.log(i,el);
-}
+// // destructuring arrays
+// for (const [i,el] of menu.entries()){
+// console.log(`${i + 1}: ${el}`);
+// }
 
+// if(restaurant.openingHours && restaurant.openingHours.mon) console.log(restaurant.openingHours.mon.open);
+
+// //  Optional chaining
+// console.log(restaurant.openingHours.mon?.open);
+
+// // Example 
+// const days = ['mon','tue','wed','thur','fri','sat','sun'];
+// for(const day of days){
+// const open = restaurant.openingHours[days]?.open ?? 'closed';
+// console.log(`On ${day}, we open at ${open}`);
+// }
+
+// // Chaining methods
+// console.log(restaurant.order?.(0,1)) ?? 'method does npt exist';
+// console.log(restaurant.orderRisotto ?.(0,1)) ?? 'method does not exist';
+
+// // Chaining Arrays
+// const user = [{name: 'Jonas', email: 'hello@jonas.io'}];
+// console.log(user[0]?.name ?? 'user array empty');
+
+// // Looping objects:
+// const property = object.key(openingHours);
+// console.log(property);
+// console.log(`we are open on ${property.length}`);
+
+
+//  sets
+//  const ordersSet = new set (['Pizza', 'Pizza','Pasta','Risotto','Pizza','Pasta']);
+//  console.log(ordersSet);
+
+//  console.log(new set('Jonas'));
+//  console.log(ordersSet.size);
+//  console.log(ordersSet.has('pizza')); 
+// console.log(ordersSet.has('Bread'));
+// ordersSet.add('Garlic Bread');
+// ordersSet.delete('Risotto');
+
+// console.log(ordersSet);
+
+// for (const order of ordersSet)
+// console.log(order);
+
+// // Example
+// const staff = ['Waiter','chef','manager','Waiter','chef'];
+// const staffUnique = [...new set(staff)];
+// console.log(staffUnique);
+
+// console.log(
+//   new set (['Waiter','chef','manager','Waiter','chef']).size
+// );
+
+
+// Maps
+
+const rest = new Map();
+rest.set('name', 'Classico Italiano',);
+rest.set(1,'Firenze,Italy');
+console.log(rest.set(2,'lisbon, Portugal'));
+
+rest.set('categories',['Italian','Pizzeria','Vegetarian','Organic'])
+.set('open', 11)
+.set('close', 23)
+.set(true,'we are open :D')
+.set(false, 'we are closed :(')
+
+console.log(rest.get('name'));
+console.log(rest.get(1));
+console.log(rest.get(true));
+
+console.log(rest.has('categories'));
+rest.delete(2);
+// rest.clear();
+console.log(rest);
+console.log(rest.size);
+
+const arr = [1,2];
+rest.set(arr, 'Test');
+rest.set(document.querySelector('h1','Heading'));
+console.log(rest);
+console.log(rest.size);
+console.log(rest.get(arr));
 // destructuring objects
 
 // const {name, openingHours,categories} = restaurant;
